@@ -13,6 +13,10 @@ const User=require('../../models/User');
 //@ascess    public
 router.post(
     '/',
+    (req,res,next)=>{
+      console.log(req.body,"hghgf")
+      next()
+    },
     [
         check('name','name is required')
           .not()
