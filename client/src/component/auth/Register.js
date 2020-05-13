@@ -1,9 +1,14 @@
 import React,{Fragment,useState} from 'react';
+import {connect} from 'react-redux';
+import {setAlert} from '../../actions/alert';
+import {register} from '../../actions/auth'
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
+
 // import axios from 'axios';
 //axios.defaults.baseURL = "http://localhost:7777";
 
-export const Register = () => {
+export const Register = ({setAlert,register}) => {
     const [formData,setFormData]=useState({
         name:'',
         email:'',
@@ -17,9 +22,9 @@ export const Register = () => {
     const onSubmit=async e=>{
         e.preventDefault();
         if(password!==password2){
-            console.log('password not match');
+            setAlert('password do not match','danger');
         }else{
-            console.log('SUCCESS')
+            register({name,email,password})
         //     const newUser={
         //         name,
         //         email,
@@ -55,7 +60,7 @@ export const Register = () => {
                         name="name"
                         value={name}
                         onChange={e=>onChange(e)}
-                        required
+                        // required
                         
                     />
                 </div>
@@ -79,7 +84,7 @@ export const Register = () => {
                         name="password"
                         value={password}
                         onChange={e => onChange(e)}
-                        minLength="6"
+                        // minLength="6"
                     />
                 </div>
                 <div className="form-group">
@@ -89,7 +94,7 @@ export const Register = () => {
                         name="password2"
                         value={password2}
                         onChange={e => onChange(e)}
-                        minLength="6"
+                        // minLength="6"
                     />
                 </div>
                 <input type="submit" className="btn btn-primary" value="Register" />
@@ -101,4 +106,9 @@ export const Register = () => {
         
     )
 }
-export default Register
+
+Register.propTypes={
+    setAlert:PropTypes.func.isRequired,
+    register:PropTypes.func.isRequired,
+}
+export default connect(null,{setAlert,register})(Register)
