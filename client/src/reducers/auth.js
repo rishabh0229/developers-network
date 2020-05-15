@@ -7,7 +7,7 @@ import {
     LOGIN_FAIL,
     LOGOUT
 } from '../actions/types';
-import { Switch } from 'react-router-dom';
+
 
 const initialState={
     token:localStorage.getItem('token'),

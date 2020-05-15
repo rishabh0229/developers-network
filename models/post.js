@@ -19,6 +19,7 @@ const PostSchema = new Schema({
         {
             user: {
                 type: Schema.Types.ObjectId
+                
             }
         }
     ],
