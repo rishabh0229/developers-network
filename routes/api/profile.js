@@ -16,6 +16,7 @@ router.get('/me', auth, async(req, res) =>{
             'user',
             ['name','avatar']
         );
+        console.log(profile,"sdf")
         if(!profile){
             return res
               .status(400)

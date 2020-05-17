@@ -9,12 +9,13 @@ import {
 
 export const getCurrentProfile=()=>async dispatch=>{
     try {
-        const res =await axios.get('/api/profile/me')
+        console.log('chal rha')
+        const res =await axios.get('api/profile/me')
         dispatch({
             type:GET_PROFILE,
             payload:res.data
         })
-        
+        console.log(res,"rishu")
     } catch (err) {
         dispatch({
             type:PROFILE_ERROR,
