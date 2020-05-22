@@ -20,6 +20,7 @@ export default function(state=initialState,action){
         case PROFILE_ERROR:
             return{
                 ...state,
+                profile:null,
                 error:payload,
                 loading:false
             }
@@ -27,7 +28,7 @@ export default function(state=initialState,action){
             return{
                 ...state,
                 profile:null,
-                repos=[],
+                repos:[],
                 loading:false
             }
         default:

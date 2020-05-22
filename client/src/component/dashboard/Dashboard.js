@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getCurrentProfile} from '../../actions/profile';
+import DashboardAction from './DashboardAction';
 import Spinner from '../layout/Spinner';
 
 const Dashboard = ({
@@ -11,8 +12,8 @@ const Dashboard = ({
     profile: { profile,loading }
 }) => {
     useEffect(() => {
-        getCurrentProfile();
-    }, []);
+      getCurrentProfile();
+    }, [getCurrentProfile]);
     // getCurrentProfile();
     // console.log("RUN")
 
@@ -21,12 +22,16 @@ const Dashboard = ({
 //         getCurrentProfile()
 //     },[])
     return (
-        loading && profile==null?<Spinner/>:<Fragment>
+        loading === true? <Spinner/>
+        :<Fragment>
             <h1 className='large text-primary'>Dashboard</h1>
             <p className="lead">
             <i className="fas fa-user"></i>Welcome {user && user.name}
             </p>
-            {profile!==null?(<Fragment>has</Fragment>
+            {profile!==null?(
+            <Fragment>
+                <DashboardAction/>
+            </Fragment>
             ):(
             <Fragment>
                 <p>you have not setup any profile, please add some info</p>

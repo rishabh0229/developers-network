@@ -27,5 +27,7 @@
     "redux-devtools-extension": "^2.13.8",
     "request": "^2.88.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "axios-logger": "^2.3.1"
+  }
 }
