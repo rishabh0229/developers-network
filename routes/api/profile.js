@@ -3,9 +3,23 @@ const router = express.Router();
 const auth=require('../middlewere/auth');
 const Profile=require('../../models/profile');
 const User=require('../../models/User');
+const Post=require('../../models/post')
 const { check, validationResult } = require("express-validator/check");
 const request=require('request');
 const config=require('config');
+
+// @route    GET api/profile
+// @desc     Get all profiles
+// @access   Public
+router.get('/', async (req, res) => {
+    try {
+        const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+        res.json(profiles);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 //@route     GET api/profile/me
 //@desc      get current user profile
@@ -139,7 +153,8 @@ router.get('/user/:user_id',async(req,res)=>{
 
 router.delete('/',auth, async (req,res)=>{
     try {
-        //@todo-remove user posts
+        //remove user post
+        await Profile.deleteMany({user:req.user.id})
         //remove profile
         await Profile.findOneAndRemove({user:req.user.id})
         //remove user
