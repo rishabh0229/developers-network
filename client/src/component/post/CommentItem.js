@@ -27,7 +27,7 @@ const CommentItem = ({
                  {text}
             </p>
                 <p className="post-date">
-                    Posted on <Moment format='YYYY/MM/DD'> {date} </Moment>
+                    Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
             </p>
             {!auth.loading && user===auth.user._id && (
                 <button onClick={e=>deleteComment(postId,_id)}
@@ -37,7 +37,8 @@ const CommentItem = ({
                 </button>
             )}
             </div>
-        </div>)
+        </div>
+        )
     
 
 CommentItem.propTypes = {

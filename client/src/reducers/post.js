@@ -11,7 +11,7 @@ import {
 
 const initialState={
     posts:[],
-    post:[],
+    post:null,
     loading:true,
     error:{}
 }
@@ -35,7 +35,6 @@ export default function(state=initialState,action){
         case ADD_POST:
             return{
                 ...state,
-                post:[payload,...state.post],
                 posts:[payload,...state.posts],
                 loading:false
             }
