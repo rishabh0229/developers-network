@@ -7,6 +7,7 @@ import DashboardAction from './DashboardAction';
 import Experience from './Experience';
 import Education from './Education'
 import Spinner from '../layout/Spinner';
+import {Redirect,useHistory} from 'react-router';
 
 const Dashboard = ({
     getCurrentProfile,
@@ -17,13 +18,14 @@ const Dashboard = ({
     useEffect(() => {
       getCurrentProfile();
     }, [getCurrentProfile]);
+    const hist = useHistory();
     // getCurrentProfile();
     // console.log("RUN")
-
 // const Dashboard = ({getCurrentProfile,auth:{user},profile:{profile,loading}}) => {
 //     useEffect(()=>{
 //         getCurrentProfile()
 //     },[])
+
     return (
         loading === true? <Spinner/>
         :<Fragment>
